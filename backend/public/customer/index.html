@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Imperial Table - Khach hang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="loginView" class="login-shell">
+      <section class="login-stage">
+        <div class="brand-mark">
+          <span>IT</span>
+        </div>
+        <h1>Imperial Table</h1>
+        <p class="lead">Khong gian dat ban va goi mon danh rieng cho khach hang.</p>
+        <form id="loginForm" class="login-panel">
+          <label>
+            Tai khoan
+            <input id="username" name="username" autocomplete="username" value="customer001" />
+          </label>
+          <label>
+            Mat khau
+            <input id="password" name="password" type="password" autocomplete="current-password" value="123" />
+          </label>
+          <button class="primary-btn" type="submit">
+            <i data-lucide="key-round"></i>
+            Dang nhap
+          </button>
+          <p id="loginError" class="error-line" role="alert"></p>
+        </form>
+      </section>
+    </main>
+
+    <main id="appView" class="app-shell hidden">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark small"><span>IT</span></div>
+          <div>
+            <strong>Imperial Table</strong>
+            <small id="customerName"></small>
+          </div>
+        </div>
+        <nav>
+          <button data-jump="tables"><i data-lucide="armchair"></i><span>Ban</span></button>
+          <button data-jump="menu"><i data-lucide="utensils"></i><span>Mon</span></button>
+          <button data-jump="history"><i data-lucide="receipt-text"></i><span>Lich su</span></button>
+          <button data-jump="payments"><i data-lucide="badge-check"></i><span>Da thanh toan</span></button>
+          <button id="logoutBtn"><i data-lucide="log-out"></i><span>Thoat</span></button>
+        </nav>
+      </header>
+
+      <section class="command-surface">
+        <div class="command-copy">
+          <p class="eyebrow">Dat ban - goi mon truc tiep</p>
+          <h2 id="welcomeTitle">Chon ban, chon mon, gui don.</h2>
+        </div>
+        <div class="stat-strip">
+          <div><span id="statAvailable">0</span><small>Trong</small></div>
+          <div><span id="statReserved">0</span><small>Da dat</small></div>
+          <div><span id="statOccupied">0</span><small>Dang dung</small></div>
+          <div><span id="cartCount">0</span><small>Mon</small></div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <section id="tables" class="panel tables-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">So do ban</p>
+              <h3>Trang thai thoi gian thuc</h3>
+            </div>
+            <button id="refreshBtn" class="icon-btn" title="Tai lai">
+              <i data-lucide="refresh-cw"></i>
+            </button>
+          </div>
+          <div id="tableGrid" class="table-grid"></div>
+        </section>
+
+        <aside class="panel booking-panel">
+          <div class="segmented">
+            <button id="modeOrder" class="active" type="button">Goi mon</button>
+            <button id="modeReserve" type="button">Dat ban</button>
+          </div>
+          <form id="bookingForm">
+            <label>
+              So khach
+              <input id="partySize" type="number" min="1" value="4" />
+            </label>
+            <label>
+              Thoi gian
+              <input id="reservedAt" type="datetime-local" />
+            </label>
+            <label>
+              Ghi chu
+              <textarea id="note" rows="3" placeholder="Vi tri, sinh nhat, yeu cau rieng..."></textarea>
+            </label>
+            <button id="submitAction" class="primary-btn" type="submit">
+              <i data-lucide="send"></i>
+              Gui don
+            </button>
+            <p id="actionMessage" class="message-line"></p>
+          </form>
+        </aside>
+      </section>
+
+      <section id="menu" class="menu-layout">
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Thuc don</p>
+              <h3>Mon an, do uong, an vat</h3>
+            </div>
+            <div id="categoryTabs" class="category-tabs"></div>
+          </div>
+          <div id="menuGrid" class="menu-grid"></div>
+        </section>
+
+        <aside class="panel cart-panel">
+          <div class="panel-heading compact">
+            <div>
+              <p class="eyebrow">Gio mon</p>
+              <h3>Hoa don tam tinh</h3>
+            </div>
+          </div>
+          <div id="cartItems" class="cart-items"></div>
+          <div class="cart-total">
+            <span>Tong cong</span>
+            <strong id="cartTotal">0 VND</strong>
+          </div>
+        </aside>
+      </section>
+
+      <section id="history" class="history-grid">
+        <section class="panel">
+          <div class="panel-heading compact">
+            <div>
+              <p class="eyebrow">Dat ban</p>
+              <h3>Lich hen cua ban</h3>
+            </div>
+          </div>
+          <div id="reservationList" class="history-list"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-heading compact">
+            <div>
+              <p class="eyebrow">Hoa don</p>
+              <h3>Don da goi</h3>
+            </div>
+          </div>
+          <div id="orderList" class="history-list"></div>
+        </section>
+        <section id="payments" class="panel">
+          <div class="panel-heading compact">
+            <div>
+              <p class="eyebrow">Thanh toan</p>
+              <h3>Lich su da xac nhan</h3>
+            </div>
+          </div>
+          <div id="paymentList" class="history-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
