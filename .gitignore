@@ -13,3 +13,5 @@ frontend/*.log
 .vscode/
 .DS_Store
 Thumbs.db
+
+tools/
