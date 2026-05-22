@@ -15,3 +15,9 @@ frontend/*.log
 Thumbs.db
 
 tools/
+tests/**/bin/
+tests/**/obj/
+
+.vs/
+tests/.vs/
+**/.vs/

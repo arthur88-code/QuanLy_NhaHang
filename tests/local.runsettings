@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <ResultsDirectory>TestResults</ResultsDirectory>
+    <EnvironmentVariables>
+      <RMS_BACKEND_URL>http://127.0.0.1:3000</RMS_BACKEND_URL>
+      <RMS_CUSTOMER_WEB_URL>http://127.0.0.1:3000/customer/</RMS_CUSTOMER_WEB_URL>
+      <RMS_STAFF_WEB_URL>http://127.0.0.1:3000/staff/</RMS_STAFF_WEB_URL>
+      <RMS_ADMIN_WEB_URL>http://127.0.0.1:3000/admin-web/</RMS_ADMIN_WEB_URL>
+      <RMS_APPIUM_URL>http://127.0.0.1:4723/</RMS_APPIUM_URL>
+      <RMS_RUN_ANDROID>0</RMS_RUN_ANDROID>
+    </EnvironmentVariables>
+  </RunConfiguration>
+</RunSettings>
