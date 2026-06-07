@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="eef7a831-2284-4402-9fbb-fa817b699d5a" name="84969@MSI 2026-06-07 23:46:45" runUser="MSI\84969" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-06-07T23:46:45.0878496+07:00" queuing="2026-06-07T23:46:45.0878500+07:00" start="2026-06-07T23:46:37.1613314+07:00" finish="2026-06-07T23:46:55.9212694+07:00" />
+  <TestSettings name="default" id="cdaaeeca-fe71-4a8e-902e-bf66de02ccce">
+    <Deployment runDeploymentRoot="84969_MSI_2026-06-07_23_46_45" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="6b018d12-8529-4084-ab15-28c9218e8137" testId="a0817ef0-c76d-9aa5-5363-2320146d11e9" testName="FAIL_Id_Tieu_De(&quot;003&quot;,&quot;staff&quot;,&quot;Sai ky vong web nhan vien&quot;,&quot;Mong doi nhan vien vao dashboard khi chua dang nhap&quot;,null)" computerName="MSI" duration="00:00:02.1700670" startTime="2026-06-07T23:46:48.2572131+07:00" endTime="2026-06-07T23:46:50.4272789+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6b018d12-8529-4084-ab15-28c9218e8137">
+      <Output>
+        <StdOut>Given backend dang san sang&#xD;
+-&gt; done: CommonSteps.GivenBackendDangSanSang() (0.0s)&#xD;
+And he thong du lieu demo duoc reset&#xD;
+-&gt; done: CommonSteps.GivenHeThongDuLieuDemoDuocReset() (0.0s)&#xD;
+Given toi mo web "staff"&#xD;
+-&gt; done: CommonSteps.GivenToiMoWeb("staff") (1.9s)&#xD;
+Then testcase fail minh hoa "FAIL-003" voi ly do "Mong doi nhan vien vao dashboard khi chua dang nhap"&#xD;
+-&gt; error: FAIL-003 FAIL minh hoa co chu dich: Mong doi nhan vien vao dashboard khi chua dang nhap (0.0s)</StdOut>
+        <ErrorInfo>
+          <Message>FAIL-003 FAIL minh hoa co chu dich: Mong doi nhan vien vao dashboard khi chua dang nhap</Message>
+          <StackTrace>   at AutoTest.StepDefinitions.FailEvidenceSteps.ThenTestcaseFailMinhHoa(String id, String reason) in D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\StepDefinitions\FailEvidenceSteps.cs:line 12&#xD;
+   at InvokeStub_Action`3.Invoke(Object, Span`1)&#xD;
+
+1)    at AutoTest.StepDefinitions.FailEvidenceSteps.ThenTestcaseFailMinhHoa(String id, String reason) in D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\StepDefinitions\FailEvidenceSteps.cs:line 12&#xD;
+   at InvokeStub_Action`3.Invoke(Object, Span`1)&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5427c402-e188-474e-9e53-e9983e6df567" testId="118bbe34-2fee-346c-78f6-047d21c65443" testName="FAIL_Id_Tieu_De(&quot;001&quot;,&quot;customer&quot;,&quot;Sai ky vong login khach hang&quot;,&quot;Mong doi trang khach hang tu dang nhap khi chua nhap account&quot;,null)" computerName="MSI" duration="00:00:05.8228570" startTime="2026-06-07T23:46:39.1950783+07:00" endTime="2026-06-07T23:46:45.0178773+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5427c402-e188-474e-9e53-e9983e6df567">
+      <Output>
+        <StdOut>Given backend dang san sang&#xD;
+-&gt; done: CommonSteps.GivenBackendDangSanSang() (0.0s)&#xD;
+And he thong du lieu demo duoc reset&#xD;
+-&gt; done: CommonSteps.GivenHeThongDuLieuDemoDuocReset() (0.0s)&#xD;
+Given toi mo web "customer"&#xD;
+-&gt; done: CommonSteps.GivenToiMoWeb("customer") (5.1s)&#xD;
+Then testcase fail minh hoa "FAIL-001" voi ly do "Mong doi trang khach hang tu dang nhap khi chua nhap account"&#xD;
+-&gt; error: FAIL-001 FAIL minh hoa co chu dich: Mong doi trang khach hang tu dang nhap khi chua nhap account (0.0s)</StdOut>
+        <ErrorInfo>
+          <Message>FAIL-001 FAIL minh hoa co chu dich: Mong doi trang khach hang tu dang nhap khi chua nhap account</Message>
+          <StackTrace>   at AutoTest.StepDefinitions.FailEvidenceSteps.ThenTestcaseFailMinhHoa(String id, String reason) in D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\StepDefinitions\FailEvidenceSteps.cs:line 12&#xD;
+
+1)    at AutoTest.StepDefinitions.FailEvidenceSteps.ThenTestcaseFailMinhHoa(String id, String reason) in D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\StepDefinitions\FailEvidenceSteps.cs:line 12&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="04b65baf-7601-44ea-8d7f-9b36fc522879" testId="dbb5d7b9-fa4b-f5d1-70e0-42291decfc40" testName="FAIL_Id_Tieu_De(&quot;005&quot;,&quot;customer&quot;,&quot;Sai ky vong lich su thanh toan khach hang&quot;,&quot;Mong doi lich su thanh toan hien khi chua dang nhap&quot;,null)" computerName="MSI" duration="00:00:03.2214330" startTime="2026-06-07T23:46:52.5670953+07:00" endTime="2026-06-07T23:46:55.7885280+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="04b65baf-7601-44ea-8d7f-9b36fc522879">
+      <Output>
+        <StdOut>Given backend dang san sang&#xD;
+-&gt; done: CommonSteps.GivenBackendDangSanSang() (0.0s)&#xD;
+And he thong du lieu demo duoc reset&#xD;
+-&gt; done: CommonSteps.GivenHeThongDuLieuDemoDuocReset() (0.0s)&#xD;
+Given toi mo web "customer"&#xD;
+-&gt; done: CommonSteps.GivenToiMoWeb("customer") (2.6s)&#xD;
+Then testcase fail minh hoa "FAIL-005" voi ly do "Mong doi lich su thanh toan hien khi chua dang nhap"&#xD;
+-&gt; error: FAIL-005 FAIL minh hoa co chu dich: Mong doi lich su thanh toan hien khi chua dang nhap (0.0s)</StdOut>
+        <ErrorInfo>
+          <Message>FAIL-005 FAIL minh hoa co chu dich: Mong doi lich su thanh toan hien khi chua dang nhap</Message>
+          <StackTrace>   at AutoTest.StepDefinitions.FailEvidenceSteps.ThenTestcaseFailMinhHoa(String id, String reason) in D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\StepDefinitions\FailEvidenceSteps.cs:line 12&#xD;
+   at InvokeStub_Action`3.Invoke(Object, Span`1)&#xD;
+
+1)    at AutoTest.StepDefinitions.FailEvidenceSteps.ThenTestcaseFailMinhHoa(String id, String reason) in D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\StepDefinitions\FailEvidenceSteps.cs:line 12&#xD;
+   at InvokeStub_Action`3.Invoke(Object, Span`1)&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="49f86b0b-06ec-4649-88b8-4f6e2a4cfe68" testId="b8bba296-8924-7b73-7eb6-4422a8c44616" testName="FAIL_Id_Tieu_De(&quot;004&quot;,&quot;admin&quot;,&quot;Sai ky vong web admin&quot;,&quot;Mong doi admin vao man quan tri khi chua dang nhap&quot;,null)" computerName="MSI" duration="00:00:02.1396960" startTime="2026-06-07T23:46:50.4273428+07:00" endTime="2026-06-07T23:46:52.5670382+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="49f86b0b-06ec-4649-88b8-4f6e2a4cfe68">
+      <Output>
+        <StdOut>Given backend dang san sang&#xD;
+-&gt; done: CommonSteps.GivenBackendDangSanSang() (0.0s)&#xD;
+And he thong du lieu demo duoc reset&#xD;
+-&gt; done: CommonSteps.GivenHeThongDuLieuDemoDuocReset() (0.0s)&#xD;
+Given toi mo web "admin"&#xD;
+-&gt; done: CommonSteps.GivenToiMoWeb("admin") (1.9s)&#xD;
+Then testcase fail minh hoa "FAIL-004" voi ly do "Mong doi admin vao man quan tri khi chua dang nhap"&#xD;
+-&gt; error: FAIL-004 FAIL minh hoa co chu dich: Mong doi admin vao man quan tri khi chua dang nhap (0.0s)</StdOut>
+        <ErrorInfo>
+          <Message>FAIL-004 FAIL minh hoa co chu dich: Mong doi admin vao man quan tri khi chua dang nhap</Message>
+          <StackTrace>   at AutoTest.StepDefinitions.FailEvidenceSteps.ThenTestcaseFailMinhHoa(String id, String reason) in D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\StepDefinitions\FailEvidenceSteps.cs:line 12&#xD;
+   at InvokeStub_Action`3.Invoke(Object, Span`1)&#xD;
+
+1)    at AutoTest.StepDefinitions.FailEvidenceSteps.ThenTestcaseFailMinhHoa(String id, String reason) in D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\StepDefinitions\FailEvidenceSteps.cs:line 12&#xD;
+   at InvokeStub_Action`3.Invoke(Object, Span`1)&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="aeea0a23-69fd-4979-b647-0402958a2ab3" testId="31f03991-d1eb-0df5-64d6-e64b01fede4c" testName="FAIL_Id_Tieu_De(&quot;002&quot;,&quot;customer&quot;,&quot;Sai ky vong danh sach mon&quot;,&quot;Mong doi mon khong ton tai xuat hien trong thuc don&quot;,null)" computerName="MSI" duration="00:00:03.2380750" startTime="2026-06-07T23:46:45.0190598+07:00" endTime="2026-06-07T23:46:48.2571340+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aeea0a23-69fd-4979-b647-0402958a2ab3">
+      <Output>
+        <StdOut>Given backend dang san sang&#xD;
+-&gt; done: CommonSteps.GivenBackendDangSanSang() (0.0s)&#xD;
+And he thong du lieu demo duoc reset&#xD;
+-&gt; done: CommonSteps.GivenHeThongDuLieuDemoDuocReset() (0.0s)&#xD;
+Given toi mo web "customer"&#xD;
+-&gt; done: CommonSteps.GivenToiMoWeb("customer") (2.6s)&#xD;
+Then testcase fail minh hoa "FAIL-002" voi ly do "Mong doi mon khong ton tai xuat hien trong thuc don"&#xD;
+-&gt; error: FAIL-002 FAIL minh hoa co chu dich: Mong doi mon khong ton tai xuat hien trong thuc don (0.0s)</StdOut>
+        <ErrorInfo>
+          <Message>FAIL-002 FAIL minh hoa co chu dich: Mong doi mon khong ton tai xuat hien trong thuc don</Message>
+          <StackTrace>   at AutoTest.StepDefinitions.FailEvidenceSteps.ThenTestcaseFailMinhHoa(String id, String reason) in D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\StepDefinitions\FailEvidenceSteps.cs:line 12&#xD;
+   at InvokeStub_Action`3.Invoke(Object, Span`1)&#xD;
+
+1)    at AutoTest.StepDefinitions.FailEvidenceSteps.ThenTestcaseFailMinhHoa(String id, String reason) in D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\StepDefinitions\FailEvidenceSteps.cs:line 12&#xD;
+   at InvokeStub_Action`3.Invoke(Object, Span`1)&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="FAIL_Id_Tieu_De(&quot;002&quot;,&quot;customer&quot;,&quot;Sai ky vong danh sach mon&quot;,&quot;Mong doi mon khong ton tai xuat hien trong thuc don&quot;,null)" storage="d:\university\laptrinhdidong\android\restaurant-management-system\5_autodescription_quanlynhahang\reqnroll_selenium_project\bin\debug\net8.0\autotest.dll" id="31f03991-d1eb-0df5-64d6-e64b01fede4c">
+      <Execution id="aeea0a23-69fd-4979-b647-0402958a2ab3" />
+      <TestMethod codeBase="D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\bin\Debug\net8.0\AutoTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="AutoTest.Features.BangChungTestcaseFailFeature" name="FAIL_Id_Tieu_De(&quot;002&quot;,&quot;customer&quot;,&quot;Sai ky vong danh sach mon&quot;,&quot;Mong doi mon khong ton tai xuat hien trong thuc don&quot;,null)" />
+    </UnitTest>
+    <UnitTest name="FAIL_Id_Tieu_De(&quot;003&quot;,&quot;staff&quot;,&quot;Sai ky vong web nhan vien&quot;,&quot;Mong doi nhan vien vao dashboard khi chua dang nhap&quot;,null)" storage="d:\university\laptrinhdidong\android\restaurant-management-system\5_autodescription_quanlynhahang\reqnroll_selenium_project\bin\debug\net8.0\autotest.dll" id="a0817ef0-c76d-9aa5-5363-2320146d11e9">
+      <Execution id="6b018d12-8529-4084-ab15-28c9218e8137" />
+      <TestMethod codeBase="D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\bin\Debug\net8.0\AutoTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="AutoTest.Features.BangChungTestcaseFailFeature" name="FAIL_Id_Tieu_De(&quot;003&quot;,&quot;staff&quot;,&quot;Sai ky vong web nhan vien&quot;,&quot;Mong doi nhan vien vao dashboard khi chua dang nhap&quot;,null)" />
+    </UnitTest>
+    <UnitTest name="FAIL_Id_Tieu_De(&quot;001&quot;,&quot;customer&quot;,&quot;Sai ky vong login khach hang&quot;,&quot;Mong doi trang khach hang tu dang nhap khi chua nhap account&quot;,null)" storage="d:\university\laptrinhdidong\android\restaurant-management-system\5_autodescription_quanlynhahang\reqnroll_selenium_project\bin\debug\net8.0\autotest.dll" id="118bbe34-2fee-346c-78f6-047d21c65443">
+      <Execution id="5427c402-e188-474e-9e53-e9983e6df567" />
+      <TestMethod codeBase="D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\bin\Debug\net8.0\AutoTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="AutoTest.Features.BangChungTestcaseFailFeature" name="FAIL_Id_Tieu_De(&quot;001&quot;,&quot;customer&quot;,&quot;Sai ky vong login khach hang&quot;,&quot;Mong doi trang khach hang tu dang nhap khi chua nhap account&quot;,null)" />
+    </UnitTest>
+    <UnitTest name="FAIL_Id_Tieu_De(&quot;004&quot;,&quot;admin&quot;,&quot;Sai ky vong web admin&quot;,&quot;Mong doi admin vao man quan tri khi chua dang nhap&quot;,null)" storage="d:\university\laptrinhdidong\android\restaurant-management-system\5_autodescription_quanlynhahang\reqnroll_selenium_project\bin\debug\net8.0\autotest.dll" id="b8bba296-8924-7b73-7eb6-4422a8c44616">
+      <Execution id="49f86b0b-06ec-4649-88b8-4f6e2a4cfe68" />
+      <TestMethod codeBase="D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\bin\Debug\net8.0\AutoTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="AutoTest.Features.BangChungTestcaseFailFeature" name="FAIL_Id_Tieu_De(&quot;004&quot;,&quot;admin&quot;,&quot;Sai ky vong web admin&quot;,&quot;Mong doi admin vao man quan tri khi chua dang nhap&quot;,null)" />
+    </UnitTest>
+    <UnitTest name="FAIL_Id_Tieu_De(&quot;005&quot;,&quot;customer&quot;,&quot;Sai ky vong lich su thanh toan khach hang&quot;,&quot;Mong doi lich su thanh toan hien khi chua dang nhap&quot;,null)" storage="d:\university\laptrinhdidong\android\restaurant-management-system\5_autodescription_quanlynhahang\reqnroll_selenium_project\bin\debug\net8.0\autotest.dll" id="dbb5d7b9-fa4b-f5d1-70e0-42291decfc40">
+      <Execution id="04b65baf-7601-44ea-8d7f-9b36fc522879" />
+      <TestMethod codeBase="D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\bin\Debug\net8.0\AutoTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="AutoTest.Features.BangChungTestcaseFailFeature" name="FAIL_Id_Tieu_De(&quot;005&quot;,&quot;customer&quot;,&quot;Sai ky vong lich su thanh toan khach hang&quot;,&quot;Mong doi lich su thanh toan hien khi chua dang nhap&quot;,null)" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="a0817ef0-c76d-9aa5-5363-2320146d11e9" executionId="6b018d12-8529-4084-ab15-28c9218e8137" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="118bbe34-2fee-346c-78f6-047d21c65443" executionId="5427c402-e188-474e-9e53-e9983e6df567" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dbb5d7b9-fa4b-f5d1-70e0-42291decfc40" executionId="04b65baf-7601-44ea-8d7f-9b36fc522879" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b8bba296-8924-7b73-7eb6-4422a8c44616" executionId="49f86b0b-06ec-4649-88b8-4f6e2a4cfe68" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="31f03991-d1eb-0df5-64d6-e64b01fede4c" executionId="aeea0a23-69fd-4979-b647-0402958a2ab3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="5" executed="5" passed="0" failed="5" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 4.6.0.0: Test execution started&#xD;
+Running selected tests in D:\University\LapTrinhDiDong\Android\restaurant-management-system\5_AutoDescription_QuanLyNhaHang\Reqnroll_Selenium_Project\bin\Debug\net8.0\AutoTest.dll&#xD;
+   NUnit3TestExecutor discovered 5 of 5 NUnit test cases using Current Discovery mode, Non-Explicit run&#xD;
+Starting ChromeDriver 148.0.7778.178 (d096af1c9e98c45c3596e59620622b1a049bfecb-refs/branch-heads/7778@{#3196}) on port 51875&#xD;
+Only local connections are allowed.&#xD;
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.&#xD;
+ChromeDriver was started successfully on port 51875.&#xD;
+Given backend dang san sang&#xD;
+-&gt; done: CommonSteps.GivenBackendDangSanSang() (0.0s)&#xD;
+And he thong du lieu demo duoc reset&#xD;
+-&gt; done: CommonSteps.GivenHeThongDuLieuDemoDuocReset() (0.0s)&#xD;
+Given toi mo web "customer"&#xD;
+-&gt; done: CommonSteps.GivenToiMoWeb("customer") (5.1s)&#xD;
+Then testcase fail minh hoa "FAIL-001" voi ly do "Mong doi trang khach hang tu dang nhap khi chua nhap account"&#xD;
+-&gt; error: FAIL-001 FAIL minh hoa co chu dich: Mong doi trang khach hang tu dang nhap khi chua nhap account (0.0s)&#xD;
+&#xD;
+Starting ChromeDriver 148.0.7778.178 (d096af1c9e98c45c3596e59620622b1a049bfecb-refs/branch-heads/7778@{#3196}) on port 51230&#xD;
+Only local connections are allowed.&#xD;
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.&#xD;
+ChromeDriver was started successfully on port 51230.&#xD;
+Given backend dang san sang&#xD;
+-&gt; done: CommonSteps.GivenBackendDangSanSang() (0.0s)&#xD;
+And he thong du lieu demo duoc reset&#xD;
+-&gt; done: CommonSteps.GivenHeThongDuLieuDemoDuocReset() (0.0s)&#xD;
+Given toi mo web "customer"&#xD;
+-&gt; done: CommonSteps.GivenToiMoWeb("customer") (2.6s)&#xD;
+Then testcase fail minh hoa "FAIL-002" voi ly do "Mong doi mon khong ton tai xuat hien trong thuc don"&#xD;
+-&gt; error: FAIL-002 FAIL minh hoa co chu dich: Mong doi mon khong ton tai xuat hien trong thuc don (0.0s)&#xD;
+&#xD;
+Starting ChromeDriver 148.0.7778.178 (d096af1c9e98c45c3596e59620622b1a049bfecb-refs/branch-heads/7778@{#3196}) on port 61629&#xD;
+Only local connections are allowed.&#xD;
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.&#xD;
+ChromeDriver was started successfully on port 61629.&#xD;
+Given backend dang san sang&#xD;
+-&gt; done: CommonSteps.GivenBackendDangSanSang() (0.0s)&#xD;
+And he thong du lieu demo duoc reset&#xD;
+-&gt; done: CommonSteps.GivenHeThongDuLieuDemoDuocReset() (0.0s)&#xD;
+Given toi mo web "staff"&#xD;
+-&gt; done: CommonSteps.GivenToiMoWeb("staff") (1.9s)&#xD;
+Then testcase fail minh hoa "FAIL-003" voi ly do "Mong doi nhan vien vao dashboard khi chua dang nhap"&#xD;
+-&gt; error: FAIL-003 FAIL minh hoa co chu dich: Mong doi nhan vien vao dashboard khi chua dang nhap (0.0s)&#xD;
+&#xD;
+Starting ChromeDriver 148.0.7778.178 (d096af1c9e98c45c3596e59620622b1a049bfecb-refs/branch-heads/7778@{#3196}) on port 52223&#xD;
+Only local connections are allowed.&#xD;
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.&#xD;
+ChromeDriver was started successfully on port 52223.&#xD;
+Given backend dang san sang&#xD;
+-&gt; done: CommonSteps.GivenBackendDangSanSang() (0.0s)&#xD;
+And he thong du lieu demo duoc reset&#xD;
+-&gt; done: CommonSteps.GivenHeThongDuLieuDemoDuocReset() (0.0s)&#xD;
+Given toi mo web "admin"&#xD;
+-&gt; done: CommonSteps.GivenToiMoWeb("admin") (1.9s)&#xD;
+Then testcase fail minh hoa "FAIL-004" voi ly do "Mong doi admin vao man quan tri khi chua dang nhap"&#xD;
+-&gt; error: FAIL-004 FAIL minh hoa co chu dich: Mong doi admin vao man quan tri khi chua dang nhap (0.0s)&#xD;
+&#xD;
+Starting ChromeDriver 148.0.7778.178 (d096af1c9e98c45c3596e59620622b1a049bfecb-refs/branch-heads/7778@{#3196}) on port 64580&#xD;
+Only local connections are allowed.&#xD;
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.&#xD;
+ChromeDriver was started successfully on port 64580.&#xD;
+Given backend dang san sang&#xD;
+-&gt; done: CommonSteps.GivenBackendDangSanSang() (0.0s)&#xD;
+And he thong du lieu demo duoc reset&#xD;
+-&gt; done: CommonSteps.GivenHeThongDuLieuDemoDuocReset() (0.0s)&#xD;
+Given toi mo web "customer"&#xD;
+-&gt; done: CommonSteps.GivenToiMoWeb("customer") (2.6s)&#xD;
+Then testcase fail minh hoa "FAIL-005" voi ly do "Mong doi lich su thanh toan hien khi chua dang nhap"&#xD;
+-&gt; error: FAIL-005 FAIL minh hoa co chu dich: Mong doi lich su thanh toan hien khi chua dang nhap (0.0s)&#xD;
+&#xD;
+NUnit Adapter 4.6.0.0: Test execution complete&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
