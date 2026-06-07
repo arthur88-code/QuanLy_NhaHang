@@ -24,10 +24,14 @@ class _PayrollScreenState extends State<PayrollScreen> {
         final rows = data['rows'] as List? ?? [];
         return AppScreen(
           title: 'Tính tiền nhân viên',
-          action: OutlinedButton.icon(
-            onPressed: () => _pickMonth(context),
-            icon: const Icon(Icons.calendar_month),
-            label: Text(_month),
+          action: Semantics(
+            label: 'action-payroll-month',
+            button: true,
+            child: OutlinedButton.icon(
+              onPressed: () => _pickMonth(context),
+              icon: const Icon(Icons.calendar_month),
+              label: Text(_month),
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

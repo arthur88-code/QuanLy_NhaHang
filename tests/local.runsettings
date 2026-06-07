@@ -8,7 +8,9 @@
       <RMS_STAFF_WEB_URL>http://127.0.0.1:3000/staff/</RMS_STAFF_WEB_URL>
       <RMS_ADMIN_WEB_URL>http://127.0.0.1:3000/admin-web/</RMS_ADMIN_WEB_URL>
       <RMS_APPIUM_URL>http://127.0.0.1:4723/</RMS_APPIUM_URL>
-      <RMS_RUN_ANDROID>0</RMS_RUN_ANDROID>
+      <RMS_RUN_ANDROID>1</RMS_RUN_ANDROID>
+      <RMS_SHOW_BROWSER>1</RMS_SHOW_BROWSER>
+      <RMS_BROWSER_CHANNEL>chrome</RMS_BROWSER_CHANNEL>
     </EnvironmentVariables>
   </RunConfiguration>
 </RunSettings>

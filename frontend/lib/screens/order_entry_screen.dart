@@ -156,34 +156,45 @@ class _OrderEntryScreenState extends State<OrderEntryScreen> {
                     final selected = _pending[toInt(map['id'])];
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: Card(
-                        child: ListTile(
-                          leading: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                              map['imageUrl']?.toString() ?? '',
-                              width: 58,
-                              height: 58,
-                              fit: BoxFit.cover,
-                              errorBuilder: (_, _, _) =>
-                                  const Icon(Icons.ramen_dining),
+                      child: Semantics(
+                        label: 'order-menu-item-${map['id']}-${map['name']}',
+                        child: Card(
+                          child: ListTile(
+                            leading: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.network(
+                                map['imageUrl']?.toString() ?? '',
+                                width: 58,
+                                height: 58,
+                                fit: BoxFit.cover,
+                                errorBuilder: (_, _, _) =>
+                                    const Icon(Icons.ramen_dining),
+                              ),
                             ),
+                            title: Text(map['name']?.toString() ?? ''),
+                            subtitle: Text(
+                              '${map['category']} - ${formatMoney(map['price'])}',
+                            ),
+                            trailing: selected == null
+                                ? Semantics(
+                                    label: 'order-add-menu-${map['id']}',
+                                    button: true,
+                                    child: IconButton(
+                                      tooltip: 'Chon mon',
+                                      onPressed: () => _addPending(map),
+                                      icon: const Icon(Icons.add_circle),
+                                    ),
+                                  )
+                                : Semantics(
+                                    label: 'order-increment-menu-${map['id']}',
+                                    button: true,
+                                    child: FilledButton.tonalIcon(
+                                      onPressed: () => _addPending(map),
+                                      icon: const Icon(Icons.add),
+                                      label: Text('x${selected['quantity']}'),
+                                    ),
+                                  ),
                           ),
-                          title: Text(map['name']?.toString() ?? ''),
-                          subtitle: Text(
-                            '${map['category']} - ${formatMoney(map['price'])}',
-                          ),
-                          trailing: selected == null
-                              ? IconButton(
-                                  tooltip: 'Chon mon',
-                                  onPressed: () => _addPending(map),
-                                  icon: const Icon(Icons.add_circle),
-                                )
-                              : FilledButton.tonalIcon(
-                                  onPressed: () => _addPending(map),
-                                  icon: const Icon(Icons.add),
-                                  label: Text('x${selected['quantity']}'),
-                                ),
                         ),
                       ),
                     );
@@ -294,9 +305,9 @@ class _PendingSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Theme.of(context).colorScheme.primaryContainer.withValues(
-        alpha: 0.42,
-      ),
+      color: Theme.of(
+        context,
+      ).colorScheme.primaryContainer.withValues(alpha: 0.42),
       child: Padding(
         padding: const EdgeInsets.all(14),
         child: Column(

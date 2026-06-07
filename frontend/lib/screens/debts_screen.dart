@@ -32,36 +32,44 @@ class DebtsScreen extends StatelessWidget {
                           toInt(map['amount']) - toInt(map['paidAmount']);
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 10),
-                        child: Card(
-                          child: ListTile(
-                            leading: Icon(
-                              map['status'] == 'paid'
-                                  ? Icons.check_circle
-                                  : Icons.account_balance_wallet_outlined,
+                        child: Semantics(
+                          label:
+                              'debt-row-${map['id']}-${map['customerName']}-${map['status']}',
+                          child: Card(
+                            child: ListTile(
+                              leading: Icon(
+                                map['status'] == 'paid'
+                                    ? Icons.check_circle
+                                    : Icons.account_balance_wallet_outlined,
+                              ),
+                              title: Text(
+                                map['customerName']?.toString() ?? '',
+                              ),
+                              subtitle: Text(
+                                'HĐ #${map['orderId']} - còn ${formatMoney(remaining)}',
+                              ),
+                              trailing:
+                                  map['status'] == 'open' && session.canCollect
+                                  ? Semantics(
+                                      label: 'debt-pay-${map['id']}',
+                                      button: true,
+                                      child: FilledButton(
+                                        onPressed: () =>
+                                            runAction(context, () async {
+                                              await api.patch(
+                                                '/debts/${map['id']}/pay',
+                                                {
+                                                  'role': session.role,
+                                                  'amount': remaining,
+                                                },
+                                              );
+                                              await refresh();
+                                            }),
+                                        child: const Text('Thu đủ'),
+                                      ),
+                                    )
+                                  : const Text('Đã xong'),
                             ),
-                            title: Text(map['customerName']?.toString() ?? ''),
-                            subtitle: Text(
-                              'HĐ #${map['orderId']} - còn ${formatMoney(remaining)}',
-                            ),
-                            trailing:
-                                map['status'] == 'open' && session.canCollect
-                                ? FilledButton(
-                                    onPressed: () => runAction(
-                                      context,
-                                      () async {
-                                        await api.patch(
-                                          '/debts/${map['id']}/pay',
-                                          {
-                                            'role': session.role,
-                                            'amount': remaining,
-                                          },
-                                        );
-                                        await refresh();
-                                      },
-                                    ),
-                                    child: const Text('Thu đủ'),
-                                  )
-                                : const Text('Đã xong'),
                           ),
                         ),
                       );

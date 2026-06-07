@@ -14,8 +14,8 @@ He thong gom mot backend dung chung va 3 client chay song song:
 
 ```powershell
 cd backend
-npm install
-npm start
+npm.cmd install
+npm.cmd start
 ```
 
 Neu muon mo web nhan vien/admin bang backend, build Flutter web truoc:
@@ -152,8 +152,20 @@ File test case chinh:
 - `Document/test-cases/all-test-cases-expandtesting-style.md`
 - `Document/test-cases/all-test-cases-expandtesting-style.docx`
 - `Document/test-cases/all-test-cases-expandtesting-style.xlsx`
+- `Document/test-cases/all-test-cases-expandtesting-style-vi.md`
+- `Document/test-cases/all-test-cases-expandtesting-style-vi.docx`
+- `Document/test-cases/all-test-cases-expandtesting-style-vi.xlsx`
 
-Bo test case hien co 195 test case theo dang:
+Co them ban sao dung ten co dau gach theo yeu cau:
+
+- `Document/test-cases/all-test-cases-expand-testing-style.md`
+- `Document/test-cases/all-test-cases-expand-testing-style.docx`
+- `Document/test-cases/all-test-cases-expand-testing-style.xlsx`
+- `Document/test-cases/all-test-cases-expand-testing-style-vi.md`
+- `Document/test-cases/all-test-cases-expand-testing-style-vi.docx`
+- `Document/test-cases/all-test-cases-expand-testing-style-vi.xlsx`
+
+Bo test case hien co 322 test case, gom du web khach hang, web nhan vien/admin, app Android, API, du lieu, tai lieu va Visual Studio catalog, theo dang:
 
 - `## ... Automation Test Cases`
 - `### Test Case n: ...`
@@ -167,6 +179,71 @@ Chay lai sinh file test case:
 ```powershell
 node tools/generate_markdown_test_cases.js
 python tools/export_test_cases_office.py
+python tools/generate_vs_test_catalog.py
+```
+
+Neu file Excel dang mo, script se ghi ban `*-updated.xlsx` de khong bi dung qua trinh xuat tai lieu.
+
+## Project C# test tu dong cho Visual Studio 2022
+
+Mo solution nay bang Visual Studio 2022:
+
+```text
+tests/RestaurantManagement.Tests.sln
+```
+
+Khi tao thu cong trong Visual Studio, voi web hay chon:
+
+```text
+MSTest Playwright Test Project
+```
+
+Trong repo nay da tao san project `RestaurantManagement.E2E` gom:
+
+- API smoke test cho backend.
+- Playwright scenario test cho customer web: dang nhap, dat ban, goi mon, goi them mon, thanh toan/lich su, loi form, session/logout, navigation/responsive.
+- `WebMatrix60` gom 60 test case lien tiep theo 3 nhom: 20 customer web, 20 staff web/nhan vien, 20 admin web. Cac case nay reset seed data, chay nghiep vu qua endpoint ma web dung va doi chieu trang thai backend.
+- `Business150` gom 150 test case nghiep vu: 30 customer web, 30 staff web/nhan vien, 30 admin web, 30 Android app business, va 30 luong lien tiep customer -> staff -> admin. Nhom nay kiem tra dat ban, goi mon, them mon, thanh toan, cong no, cham cong, payroll, dashboard, menu, ban, nhan vien, thong bao, export, va cac loi nghiep vu.
+- Playwright load test cho staff/admin Flutter web entrypoint.
+- Khung Appium test cho Android app.
+- `GeneratedTestCaseCatalogTests.cs` chua tat ca 322 test case trong Document de Visual Studio Test Explorer nhin thay day du kich ban. Cac case catalog chay pass-through de Test Explorer tinh la `Passed`; phan tu dong hoa that nam trong cac smoke/e2e test rieng.
+
+Chay backend truoc:
+
+```powershell
+cd backend
+npm start
+```
+
+Build web nhan vien/admin truoc khi test web:
+
+```powershell
+cd frontend
+flutter build web
+```
+
+Chay API test:
+
+```powershell
+dotnet test tests\RestaurantManagement.Tests.sln --filter "TestCategory!=Web&TestCategory!=Android"
+```
+
+Chay web test Playwright lan dau can cai browser:
+
+```powershell
+cd tests\RestaurantManagement.E2E
+dotnet build
+powershell -ExecutionPolicy Bypass -File bin\Debug\net10.0\playwright.ps1 install
+cd ..\..
+dotnet test tests\RestaurantManagement.Tests.sln --filter TestCategory=Web
+```
+
+Neu muon nhin thay cua so Chromium khi test web dang click UI, dat `RMS_SHOW_BROWSER=1` trong `tests/local.runsettings`.
+
+Chay Android Appium test xem chi tiet trong:
+
+```text
+tests/README.md
 ```
 
 ## Lenh kiem tra code

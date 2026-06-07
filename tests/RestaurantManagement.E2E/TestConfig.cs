@@ -36,6 +36,12 @@ internal static class TestConfig
     public static bool RunAndroid =>
         IsTruthy(Environment.GetEnvironmentVariable("RMS_RUN_ANDROID"));
 
+    public static bool ShowBrowser =>
+        IsTruthy(Environment.GetEnvironmentVariable("RMS_SHOW_BROWSER"));
+
+    public static string BrowserChannel =>
+        Environment.GetEnvironmentVariable("RMS_BROWSER_CHANNEL") ?? "chrome";
+
     private static string ReadUrl(string key, string fallback)
     {
         var value = Environment.GetEnvironmentVariable(key);

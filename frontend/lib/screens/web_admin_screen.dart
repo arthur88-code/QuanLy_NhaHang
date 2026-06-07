@@ -34,13 +34,17 @@ class WebAdminScreen extends StatelessWidget {
         ).convert(data['export']);
         return AppScreen(
           title: 'Quản trị web',
-          action: FilledButton.icon(
-            onPressed: () => runAction(context, () async {
-              await api.post('/admin/reset', {});
-              await refresh();
-            }),
-            icon: const Icon(Icons.restore),
-            label: const Text('Reset demo'),
+          action: Semantics(
+            label: 'action-reset-demo',
+            button: true,
+            child: FilledButton.icon(
+              onPressed: () => runAction(context, () async {
+                await api.post('/admin/reset', {});
+                await refresh();
+              }),
+              icon: const Icon(Icons.restore),
+              label: const Text('Reset demo'),
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

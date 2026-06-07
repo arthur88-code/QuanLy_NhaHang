@@ -26,10 +26,14 @@ class TablesScreen extends StatelessWidget {
           onRefresh: refresh,
           child: AppScreen(
             title: 'Quản lý bàn',
-            action: FilledButton.icon(
-              onPressed: () => _showTableDialog(context, api, refresh),
-              icon: const Icon(Icons.add),
-              label: const Text('Thêm bàn'),
+            action: Semantics(
+              label: 'action-add-table',
+              button: true,
+              child: FilledButton.icon(
+                onPressed: () => _showTableDialog(context, api, refresh),
+                icon: const Icon(Icons.add),
+                label: const Text('Thêm bàn'),
+              ),
             ),
             child: LayoutBuilder(
               builder: (context, constraints) {
@@ -213,68 +217,71 @@ class _TableCard extends StatelessWidget {
       'reserved' => 'Đặt trước',
       _ => 'Trống',
     };
-    return InkWell(
-      borderRadius: BorderRadius.circular(8),
-      onTap: onTap,
-      onLongPress: onLongPress,
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(14),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.table_bar, color: color),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      table['name']?.toString() ?? '',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w900,
+    return Semantics(
+      label: 'table-card-${table['id']}-${table['name']}-$status',
+      button: true,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8),
+        onTap: onTap,
+        onLongPress: onLongPress,
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(14),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.table_bar, color: color),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        table['name']?.toString() ?? '',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.w900),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8),
-              Text('${table['area']} - ${table['seats']} ghế'),
-              const SizedBox(height: 8),
-              const Spacer(),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  Chip(
-                    visualDensity: VisualDensity.compact,
-                    label: Text(label),
-                    backgroundColor: color.withValues(alpha: 0.12),
-                    side: BorderSide(color: color.withValues(alpha: 0.35)),
-                    labelStyle: TextStyle(
-                      color: color,
-                      fontWeight: FontWeight.w800,
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text('${table['area']} - ${table['seats']} ghế'),
+                const SizedBox(height: 8),
+                const Spacer(),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    Chip(
+                      visualDensity: VisualDensity.compact,
+                      label: Text(label),
+                      backgroundColor: color.withValues(alpha: 0.12),
+                      side: BorderSide(color: color.withValues(alpha: 0.35)),
+                      labelStyle: TextStyle(
+                        color: color,
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
+                    ActionChip(
+                      visualDensity: VisualDensity.compact,
+                      avatar: const Icon(Icons.touch_app_outlined, size: 16),
+                      label: const Text('Gọi món'),
+                      onPressed: onTap,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  'Nhấn giữ để sửa/xóa',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: const Color(0xFF64748B),
                   ),
-                  ActionChip(
-                    visualDensity: VisualDensity.compact,
-                    avatar: const Icon(Icons.touch_app_outlined, size: 16),
-                    label: const Text('Gọi món'),
-                    onPressed: onTap,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 2),
-              Text(
-                'Nhấn giữ để sửa/xóa',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodySmall?.copyWith(color: const Color(0xFF64748B)),
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -18,71 +18,91 @@ class MenuScreen extends StatelessWidget {
           onRefresh: refresh,
           child: AppScreen(
             title: 'Quản lý món ăn',
-            action: FilledButton.icon(
-              onPressed: () => _showMenuDialog(context, api, refresh),
-              icon: const Icon(Icons.add),
-              label: const Text('Thêm món'),
+            action: Semantics(
+              label: 'action-add-menu',
+              button: true,
+              child: FilledButton.icon(
+                onPressed: () => _showMenuDialog(context, api, refresh),
+                icon: const Icon(Icons.add),
+                label: const Text('Thêm món'),
+              ),
             ),
             child: Column(
               children: menu.map((item) {
                 final map = asMap(item);
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 10),
-                  child: Card(
-                    child: ListTile(
-                      leading: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          map['imageUrl']?.toString() ?? '',
-                          width: 56,
-                          height: 56,
-                          fit: BoxFit.cover,
-                          errorBuilder: (_, _, _) =>
-                              const Icon(Icons.ramen_dining),
+                  child: Semantics(
+                    label:
+                        'menu-row-${map['id']}-${map['name']}-${map['available'] == true ? 'available' : 'hidden'}',
+                    child: Card(
+                      child: ListTile(
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.network(
+                            map['imageUrl']?.toString() ?? '',
+                            width: 56,
+                            height: 56,
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, _, _) =>
+                                const Icon(Icons.ramen_dining),
+                          ),
                         ),
-                      ),
-                      title: Text(map['name']?.toString() ?? ''),
-                      subtitle: Text(
-                        '${map['category']} - ${formatMoney(map['price'])}',
-                      ),
-                      trailing: Wrap(
-                        children: [
-                          IconButton(
-                            tooltip: map['available'] == true
-                                ? 'Đang bán'
-                                : 'Tạm ẩn',
-                            onPressed: () => runAction(context, () async {
-                              await api.put('/menu/${map['id']}', {
-                                ...map,
-                                'available': !(map['available'] == true),
-                              });
-                              await refresh();
-                            }),
-                            icon: Icon(
-                              map['available'] == true
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                        title: Text(map['name']?.toString() ?? ''),
+                        subtitle: Text(
+                          '${map['category']} - ${formatMoney(map['price'])}',
+                        ),
+                        trailing: Wrap(
+                          children: [
+                            Semantics(
+                              label: 'menu-toggle-${map['id']}',
+                              button: true,
+                              child: IconButton(
+                                tooltip: map['available'] == true
+                                    ? 'Đang bán'
+                                    : 'Tạm ẩn',
+                                onPressed: () => runAction(context, () async {
+                                  await api.put('/menu/${map['id']}', {
+                                    ...map,
+                                    'available': !(map['available'] == true),
+                                  });
+                                  await refresh();
+                                }),
+                                icon: Icon(
+                                  map['available'] == true
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
+                              ),
                             ),
-                          ),
-                          IconButton(
-                            tooltip: 'Sửa',
-                            onPressed: () => _showMenuDialog(
-                              context,
-                              api,
-                              refresh,
-                              item: map,
+                            Semantics(
+                              label: 'menu-edit-${map['id']}',
+                              button: true,
+                              child: IconButton(
+                                tooltip: 'Sửa',
+                                onPressed: () => _showMenuDialog(
+                                  context,
+                                  api,
+                                  refresh,
+                                  item: map,
+                                ),
+                                icon: const Icon(Icons.edit_outlined),
+                              ),
                             ),
-                            icon: const Icon(Icons.edit_outlined),
-                          ),
-                          IconButton(
-                            tooltip: 'Xóa',
-                            onPressed: () => runAction(context, () async {
-                              await api.delete('/menu/${map['id']}');
-                              await refresh();
-                            }),
-                            icon: const Icon(Icons.delete_outline),
-                          ),
-                        ],
+                            Semantics(
+                              label: 'menu-delete-${map['id']}',
+                              button: true,
+                              child: IconButton(
+                                tooltip: 'Xóa',
+                                onPressed: () => runAction(context, () async {
+                                  await api.delete('/menu/${map['id']}');
+                                  await refresh();
+                                }),
+                                icon: const Icon(Icons.delete_outline),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

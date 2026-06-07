@@ -23,10 +23,14 @@ class AttendanceScreen extends StatelessWidget {
         final employees = data['employees'] as List<dynamic>;
         return AppScreen(
           title: 'Danh sách nhân viên chấm công',
-          action: FilledButton.icon(
-            onPressed: () => _checkIn(context, api, employees, refresh),
-            icon: const Icon(Icons.login),
-            label: const Text('Vào ca'),
+          action: Semantics(
+            label: 'action-check-in',
+            button: true,
+            child: FilledButton.icon(
+              onPressed: () => _checkIn(context, api, employees, refresh),
+              icon: const Icon(Icons.login),
+              label: const Text('Vào ca'),
+            ),
           ),
           child: Column(
             children: attendance.isEmpty
@@ -36,25 +40,36 @@ class AttendanceScreen extends StatelessWidget {
                     final employee = asMap(map['employee']);
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: Card(
-                        child: ListTile(
-                          leading: const Icon(Icons.fact_check_outlined),
-                          title: Text(employee['name']?.toString() ?? ''),
-                          subtitle: Text(
-                            'Vào: ${shortDate(map['checkIn'])} - Ra: ${map['checkOut'] == null ? 'chưa ra ca' : shortDate(map['checkOut'])}',
+                      child: Semantics(
+                        label:
+                            'attendance-row-${map['id']}-${employee['name']}-${map['checkOut'] == null ? 'open' : 'done'}',
+                        child: Card(
+                          child: ListTile(
+                            leading: const Icon(Icons.fact_check_outlined),
+                            title: Text(employee['name']?.toString() ?? ''),
+                            subtitle: Text(
+                              'Vào: ${shortDate(map['checkIn'])} - Ra: ${map['checkOut'] == null ? 'chưa ra ca' : shortDate(map['checkOut'])}',
+                            ),
+                            trailing: map['checkOut'] == null
+                                ? Semantics(
+                                    label: 'attendance-checkout-${map['id']}',
+                                    button: true,
+                                    child: FilledButton(
+                                      onPressed: () => runAction(
+                                        context,
+                                        () async {
+                                          await api.patch(
+                                            '/attendance/${map['id']}/check-out',
+                                            {},
+                                          );
+                                          await refresh();
+                                        },
+                                      ),
+                                      child: const Text('Ra ca'),
+                                    ),
+                                  )
+                                : const Text('Xong'),
                           ),
-                          trailing: map['checkOut'] == null
-                              ? FilledButton(
-                                  onPressed: () => runAction(context, () async {
-                                    await api.patch(
-                                      '/attendance/${map['id']}/check-out',
-                                      {},
-                                    );
-                                    await refresh();
-                                  }),
-                                  child: const Text('Ra ca'),
-                                )
-                              : const Text('Xong'),
                         ),
                       ),
                     );

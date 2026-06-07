@@ -14,10 +14,14 @@ class EmployeesScreen extends StatelessWidget {
       builder: (context, employees, refresh) {
         return AppScreen(
           title: 'Quan ly nhan vien',
-          action: FilledButton.icon(
-            onPressed: () => _showEmployeeDialog(context, api, refresh),
-            icon: const Icon(Icons.add),
-            label: const Text('Them'),
+          action: Semantics(
+            label: 'action-add-employee',
+            button: true,
+            child: FilledButton.icon(
+              onPressed: () => _showEmployeeDialog(context, api, refresh),
+              icon: const Icon(Icons.add),
+              label: const Text('Them'),
+            ),
           ),
           child: Column(
             children: employees.map((employee) {
@@ -28,39 +32,51 @@ class EmployeesScreen extends StatelessWidget {
               final isActive = map['active'] != false;
               return Padding(
                 padding: const EdgeInsets.only(bottom: 10),
-                child: Card(
-                  child: ListTile(
-                    leading: Icon(
-                      isActive
-                          ? Icons.badge_outlined
-                          : Icons.person_off_outlined,
-                    ),
-                    title: Text(map['name']?.toString() ?? ''),
-                    subtitle: Text(
-                      '${map['role']} - ${map['phone']} - ${formatMoney(map['salaryPerDay'])}/ngay\nTai khoan: ${account['username'] ?? 'chua co'} - ${account['role'] ?? 'staff'}',
-                    ),
-                    isThreeLine: true,
-                    trailing: Wrap(
-                      children: [
-                        IconButton(
-                          tooltip: 'Sua nhan vien va tai khoan',
-                          onPressed: () => _showEmployeeDialog(
-                            context,
-                            api,
-                            refresh,
-                            employee: map,
+                child: Semantics(
+                  label:
+                      'employee-row-${map['id']}-${map['name']}-${isActive ? 'active' : 'locked'}',
+                  child: Card(
+                    child: ListTile(
+                      leading: Icon(
+                        isActive
+                            ? Icons.badge_outlined
+                            : Icons.person_off_outlined,
+                      ),
+                      title: Text(map['name']?.toString() ?? ''),
+                      subtitle: Text(
+                        '${map['role']} - ${map['phone']} - ${formatMoney(map['salaryPerDay'])}/ngay\nTai khoan: ${account['username'] ?? 'chua co'} - ${account['role'] ?? 'staff'}',
+                      ),
+                      isThreeLine: true,
+                      trailing: Wrap(
+                        children: [
+                          Semantics(
+                            label: 'employee-edit-${map['id']}',
+                            button: true,
+                            child: IconButton(
+                              tooltip: 'Sua nhan vien va tai khoan',
+                              onPressed: () => _showEmployeeDialog(
+                                context,
+                                api,
+                                refresh,
+                                employee: map,
+                              ),
+                              icon: const Icon(Icons.edit_outlined),
+                            ),
                           ),
-                          icon: const Icon(Icons.edit_outlined),
-                        ),
-                        IconButton(
-                          tooltip: 'Khoa tai khoan',
-                          onPressed: () => runAction(context, () async {
-                            await api.delete('/employees/${map['id']}');
-                            await refresh();
-                          }),
-                          icon: const Icon(Icons.lock_outline),
-                        ),
-                      ],
+                          Semantics(
+                            label: 'employee-lock-${map['id']}',
+                            button: true,
+                            child: IconButton(
+                              tooltip: 'Khoa tai khoan',
+                              onPressed: () => runAction(context, () async {
+                                await api.delete('/employees/${map['id']}');
+                                await refresh();
+                              }),
+                              icon: const Icon(Icons.lock_outline),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -17,10 +17,14 @@ class NotificationsScreen extends StatelessWidget {
         return AppScreen(
           title: 'Thông báo',
           action: isAdmin
-              ? FilledButton.icon(
-                  onPressed: () => _showDialog(context, api, refresh),
-                  icon: const Icon(Icons.add),
-                  label: const Text('Tạo'),
+              ? Semantics(
+                  label: 'action-create-notification',
+                  button: true,
+                  child: FilledButton.icon(
+                    onPressed: () => _showDialog(context, api, refresh),
+                    icon: const Icon(Icons.add),
+                    label: const Text('Tạo'),
+                  ),
                 )
               : null,
           child: Column(
@@ -30,25 +34,33 @@ class NotificationsScreen extends StatelessWidget {
                     final map = asMap(item);
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: Card(
-                        child: ListTile(
-                          leading: const Icon(Icons.notifications_outlined),
-                          title: Text(map['title']?.toString() ?? ''),
-                          subtitle: Text(
-                            '${map['body']}\n${shortDate(map['createdAt'])}',
+                      child: Semantics(
+                        label: 'notification-row-${map['id']}-${map['title']}',
+                        child: Card(
+                          child: ListTile(
+                            leading: const Icon(Icons.notifications_outlined),
+                            title: Text(map['title']?.toString() ?? ''),
+                            subtitle: Text(
+                              '${map['body']}\n${shortDate(map['createdAt'])}',
+                            ),
+                            isThreeLine: true,
+                            trailing: isAdmin
+                                ? Semantics(
+                                    label: 'notification-delete-${map['id']}',
+                                    button: true,
+                                    child: IconButton(
+                                      onPressed: () =>
+                                          runAction(context, () async {
+                                            await api.delete(
+                                              '/notifications/${map['id']}',
+                                            );
+                                            await refresh();
+                                          }),
+                                      icon: const Icon(Icons.delete_outline),
+                                    ),
+                                  )
+                                : null,
                           ),
-                          isThreeLine: true,
-                          trailing: isAdmin
-                              ? IconButton(
-                                  onPressed: () => runAction(context, () async {
-                                    await api.delete(
-                                      '/notifications/${map['id']}',
-                                    );
-                                    await refresh();
-                                  }),
-                                  icon: const Icon(Icons.delete_outline),
-                                )
-                              : null,
                         ),
                       ),
                     );

@@ -98,60 +98,77 @@ class _InvoiceCard extends StatelessWidget {
     final customerName = order['customerName']?.toString() ?? '';
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
-      child: Card(
-        child: ExpansionTile(
-          title: Text('${order['tableName']} - HD #${order['id']}'),
-          subtitle: Text(
-            '${_statusLabel(order['status'])} - ${formatMoney(order['total'])}',
-          ),
-          childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 14),
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                customerName.isEmpty
-                    ? 'Khach: khong lien ket tai khoan khach'
-                    : 'Khach: $customerName - ${order['customerPhone'] ?? ''}',
-              ),
+      child: Semantics(
+        label:
+            'invoice-card-${order['id']}-${order['tableName']}-${order['status']}',
+        button: true,
+        child: Card(
+          child: ExpansionTile(
+            title: Text('${order['tableName']} - HD #${order['id']}'),
+            subtitle: Text(
+              '${_statusLabel(order['status'])} - ${formatMoney(order['total'])}',
             ),
-            const SizedBox(height: 8),
-            if (batches.isEmpty)
-              const EmptyState(text: 'Hoa don chua co mon')
-            else
-              ...batches.map((batch) => _InvoiceBatch(batch: asMap(batch))),
-            const Divider(),
-            Row(
-              children: [
-                Expanded(child: Text('Nhan vien: ${order['staffName'] ?? ''}')),
-                Text(
-                  formatMoney(order['total']),
-                  style: const TextStyle(fontWeight: FontWeight.w900),
+            childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 14),
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  customerName.isEmpty
+                      ? 'Khach: khong lien ket tai khoan khach'
+                      : 'Khach: $customerName - ${order['customerPhone'] ?? ''}',
                 ),
-              ],
-            ),
-            if (order['status'] == 'open' && session.canCollect) ...[
-              const SizedBox(height: 12),
+              ),
+              const SizedBox(height: 8),
+              if (batches.isEmpty)
+                const EmptyState(text: 'Hoa don chua co mon')
+              else
+                ...batches.map((batch) => _InvoiceBatch(batch: asMap(batch))),
+              const Divider(),
               Row(
                 children: [
                   Expanded(
-                    child: FilledButton.icon(
-                      onPressed: () => _pay(context),
-                      icon: const Icon(Icons.done_all),
-                      label: const Text('Da tra'),
-                    ),
+                    child: Text('Nhan vien: ${order['staffName'] ?? ''}'),
                   ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: () => _debt(context),
-                      icon: const Icon(Icons.account_balance_wallet_outlined),
-                      label: const Text('Ghi no'),
-                    ),
+                  Text(
+                    formatMoney(order['total']),
+                    style: const TextStyle(fontWeight: FontWeight.w900),
                   ),
                 ],
               ),
+              if (order['status'] == 'open' && session.canCollect) ...[
+                const SizedBox(height: 12),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Semantics(
+                        label: 'invoice-pay-${order['id']}',
+                        button: true,
+                        child: FilledButton.icon(
+                          onPressed: () => _pay(context),
+                          icon: const Icon(Icons.done_all),
+                          label: const Text('Da tra'),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Semantics(
+                        label: 'invoice-debt-${order['id']}',
+                        button: true,
+                        child: OutlinedButton.icon(
+                          onPressed: () => _debt(context),
+                          icon: const Icon(
+                            Icons.account_balance_wallet_outlined,
+                          ),
+                          label: const Text('Ghi no'),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
